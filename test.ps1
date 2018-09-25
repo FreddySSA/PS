@@ -1,8 +1,8 @@
 <#
 .Synopsis
-   Short description
+   Alternate Data stream
 .DESCRIPTION
-   Long description
+   http://www.powertheshell.com/ntfsstreams/
 .EXAMPLE
    Example of how to use this cmdlet
 .EXAMPLE
@@ -25,4 +25,11 @@
         $Param2
     )
 
- 
+$file = "$env:temp\file.txt"
+Set-Content -Path $file -Value 'Test'
+Get-Content -Path $file
+
+Add-Content -Path $file -Value 'Secret Information' -Stream 'secretStream'
+Get-Content -Path $file
+
+Get-Content -Path $file -Stream 'secretStream'
